@@ -32,9 +32,9 @@ const App = () => {
       <CssBaseline />
       <AppBar position="sticky">
         <Toolbar>
-          <Grid container direction="row" justifyContent="space-between" alignItems="center">
-            <Grid item>
-              <Grid container columnSpacing={1.25} direction="row" alignItems="center">
+          <Grid container direction="row" justifyContent="space-between" alignItems="center" sx={{ py: 2 }}>
+            <Grid item xs={12} sm={6}>
+              <Grid container columnSpacing={1.25} direction="row" alignItems="center" justifyContent="flex-start">
                 <Grid item>
                   <Logo fontSize="large" />
                 </Grid>
@@ -43,12 +43,11 @@ const App = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item>
-              <Grid container columnSpacing={2} direction="row" alignItems="center">
+            <Grid item xs={12} sm={6}>
+              <Grid container direction="row" alignItems="center" justifyContent="flex-end">
                 <Grid item>
                   <InputBase
                     placeholder="Pesquisar..."
-                    size="small"
                     autoFocus
                     startAdornment={
                       <InputAdornment position="start">
