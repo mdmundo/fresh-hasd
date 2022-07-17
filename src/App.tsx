@@ -10,6 +10,7 @@ import {
   IconButton,
   InputAdornment,
   InputBase,
+  Link,
   Paper,
   TextField,
   ThemeProvider,
@@ -74,7 +75,13 @@ const App = () => {
                   <Typography variant="button" children={title} />
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant="contained" startIcon={<YouTube />} children="Tocar" />
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    startIcon={<YouTube />}
+                    children="Tocar"
+                    href={`https://youtu.be/${id}`}
+                  />
                 </CardActions>
               </Card>
             </Grid>
