@@ -64,7 +64,7 @@ const App = () => {
           </Grid>
         </Toolbar>
       </AppBar>
-      <Container sx={{ my: 2 }}>
+      <Container sx={{ mt: 2, mb: 10 }}>
         <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
           {hymns.map(({ id, num, title }) => (
             <Grid item>
