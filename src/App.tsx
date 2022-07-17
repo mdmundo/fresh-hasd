@@ -36,7 +36,7 @@ const App = () => {
                   <Logo fontSize="large" />
                 </Grid>
                 <Grid item>
-                  <Typography children="Novo Hinário Adventista" />
+                  <Typography variant="h6" children="Novo Hinário Adventista" />
                 </Grid>
               </Grid>
             </Grid>
