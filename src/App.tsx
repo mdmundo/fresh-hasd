@@ -101,8 +101,6 @@ const App = () => {
   );
 };
 
-export default App;
-
 const Hymn = ({ hymn }: { hymn: { id: string; num: string; title: string } }) => {
   return (
     <Grid item key={hymn.id}>
@@ -124,3 +122,5 @@ const Hymn = ({ hymn }: { hymn: { id: string; num: string; title: string } }) =>
     </Grid>
   );
 };
+
+export default App;
