@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { YouTube } from "@mui/icons-material";
+import hymns from "./hymns.json";
 
 const App = () => {
   const theme = createTheme({
@@ -51,12 +52,12 @@ const App = () => {
       </AppBar>
       <Container sx={{ my: 2 }}>
         <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
-          {new Array(1000).fill(0).map(() => (
+          {hymns.map(({ id, num, title }) => (
             <Grid item>
               <Card>
                 <CardContent>
-                  <Typography variant="h6">Hino 1</Typography>
-                  <Typography variant="button">Santo Santo Santo</Typography>
+                  <Typography variant="h6" children={num} />
+                  <Typography variant="button" children={title} />
                 </CardContent>
                 <CardActions>
                   <Button fullWidth variant="contained" startIcon={<YouTube />} children="Tocar" />
