@@ -7,12 +7,13 @@ import {
   Container,
   createTheme,
   Grid,
+  IconButton,
   ThemeProvider,
   Toolbar,
   Typography,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import { YouTube } from "@mui/icons-material";
+import { YouTube, GitHub } from "@mui/icons-material";
 import hymns from "./hymns.json";
 
 const App = () => {
@@ -40,7 +41,7 @@ const App = () => {
             <Grid item>
               <Grid container columnSpacing={2} direction="row" alignItems="center">
                 <Grid item>
-                  <Typography children="Github" />
+                  <IconButton color="inherit" children={<GitHub />} />
                 </Grid>
                 <Grid item>
                   <Typography children="Barra de Pesquisa" />
