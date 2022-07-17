@@ -49,6 +49,7 @@ const App = () => {
                   <InputBase
                     placeholder="Pesquisar..."
                     size="small"
+                    autoFocus
                     startAdornment={
                       <InputAdornment position="start">
                         <Search />
