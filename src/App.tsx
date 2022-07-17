@@ -1,7 +1,18 @@
-import { useState } from "react";
+import { createTheme, ThemeProvider, Typography } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 
-function App() {
-  return <p>Click on the Vite and React logos to learn more</p>;
-}
+const App = () => {
+  const theme = createTheme({
+    palette: { mode: "dark", primary: { main: "#edce5b", light: "#fff261", dark: "#a08b3d" } },
+    typography: { fontFamily: '"Ubuntu", "Roboto", "Helvetica", "Arial", sans-serif' },
+  });
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Typography variant="h1" children="Hi! Lorena" />
+    </ThemeProvider>
+  );
+};
 
 export default App;
