@@ -68,7 +68,7 @@ const App = () => {
             <Grid item>
               <Card>
                 <CardContent>
-                  <Typography variant="h6" children={num} />
+                  <Typography variant="h6" children={`Hino ${num}`} />
                   <Typography variant="button" children={title} />
                 </CardContent>
                 <CardActions>
