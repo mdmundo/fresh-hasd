@@ -86,27 +86,14 @@ const App = () => {
       </AppBar>
       <Container sx={{ mt: 2, mb: 10 }}>
         <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
-          {results.map(
-            (id) =>
-              typeof id === "number" && (
-                <Grid item key={hymns[id].id}>
-                  <Card>
-                    <CardContent>
-                      <Typography variant="h6" children={`Hino ${hymns[id].num}`} />
-                      <Typography variant="button" children={hymns[id].title} />
-                    </CardContent>
-                    <CardActions>
-                      <Button
-                        fullWidth
-                        variant="contained"
-                        startIcon={<YouTube />}
-                        children="Tocar"
-                        href={`https://youtu.be/${hymns[id].id}`}
-                      />
-                    </CardActions>
-                  </Card>
-                </Grid>
-              )
+          {stroke ? (
+            results.length > 0 ? (
+              results.map((id) => typeof id === "number" && <Hymn hymn={hymns[id]} />)
+            ) : (
+              <Grid item children={<Typography variant="body1" children="A busca não retornou qualquer hino" />} />
+            )
+          ) : (
+            hymns.map((hymn) => <Hymn hymn={hymn} />)
           )}
         </Grid>
       </Container>
@@ -115,3 +102,25 @@ const App = () => {
 };
 
 export default App;
+
+const Hymn = ({ hymn }: { hymn: { id: string; num: string; title: string } }) => {
+  return (
+    <Grid item key={hymn.id}>
+      <Card>
+        <CardContent>
+          <Typography variant="h6" children={`Hino ${hymn.num}`} />
+          <Typography variant="button" children={hymn.title} />
+        </CardContent>
+        <CardActions>
+          <Button
+            fullWidth
+            variant="contained"
+            startIcon={<YouTube />}
+            children="Tocar"
+            href={`https://youtu.be/${hymn.id}`}
+          />
+        </CardActions>
+      </Card>
+    </Grid>
+  );
+};
