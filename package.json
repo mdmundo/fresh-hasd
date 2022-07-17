@@ -13,9 +13,9 @@
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.0",
-    "minisearch": "^5.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-minisearch": "^5.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",
