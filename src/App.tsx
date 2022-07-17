@@ -8,12 +8,16 @@ import {
   createTheme,
   Grid,
   IconButton,
+  InputAdornment,
+  InputBase,
+  Paper,
+  TextField,
   ThemeProvider,
   Toolbar,
   Typography,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import { YouTube, GitHub } from "@mui/icons-material";
+import { YouTube, GitHub, Search } from "@mui/icons-material";
 import hymns from "./hymns.json";
 import { Logo } from "./Icons";
 
@@ -26,13 +30,12 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="sticky" enableColorOnDark>
+      <AppBar position="sticky">
         <Toolbar>
           <Grid container direction="row" justifyContent="space-between" alignItems="center">
             <Grid item>
               <Grid container columnSpacing={1.25} direction="row" alignItems="center">
                 <Grid item>
-                  {/* <IconButton color="inherit" size="large" children={<Logo fontSize="large" />} /> */}
                   <Logo fontSize="large" />
                 </Grid>
                 <Grid item>
@@ -43,10 +46,18 @@ const App = () => {
             <Grid item>
               <Grid container columnSpacing={2} direction="row" alignItems="center">
                 <Grid item>
-                  <IconButton color="inherit" children={<GitHub />} />
+                  <InputBase
+                    placeholder="Pesquisar..."
+                    size="small"
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <Search />
+                      </InputAdornment>
+                    }
+                  />
                 </Grid>
                 <Grid item>
-                  <Typography children="Barra de Pesquisa" />
+                  <IconButton color="inherit" children={<GitHub />} />
                 </Grid>
               </Grid>
             </Grid>
