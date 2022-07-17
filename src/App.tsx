@@ -86,25 +86,28 @@ const App = () => {
       </AppBar>
       <Container sx={{ mt: 2, mb: 10 }}>
         <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
-          {hymns.map(({ id, num, title }) => (
-            <Grid item key={id}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h6" children={`Hino ${num}`} />
-                  <Typography variant="button" children={title} />
-                </CardContent>
-                <CardActions>
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    startIcon={<YouTube />}
-                    children="Tocar"
-                    href={`https://youtu.be/${id}`}
-                  />
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
+          {results.map(
+            (id) =>
+              typeof id === "number" && (
+                <Grid item key={hymns[id].id}>
+                  <Card>
+                    <CardContent>
+                      <Typography variant="h6" children={`Hino ${hymns[id].num}`} />
+                      <Typography variant="button" children={hymns[id].title} />
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        startIcon={<YouTube />}
+                        children="Tocar"
+                        href={`https://youtu.be/${hymns[id].id}`}
+                      />
+                    </CardActions>
+                  </Card>
+                </Grid>
+              )
+          )}
         </Grid>
       </Container>
     </ThemeProvider>
