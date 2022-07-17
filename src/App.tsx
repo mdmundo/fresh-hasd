@@ -19,12 +19,12 @@ import { YouTube, GitHub, Search } from "@mui/icons-material";
 import hymns from "./hymns.json";
 import { Logo } from "./Icons";
 
-const App = () => {
   const theme = createTheme({
     palette: { mode: "dark", primary: { main: "#edce5b", light: "#fff261", dark: "#a08b3d" } },
     typography: { fontFamily: '"Ubuntu", "Roboto", "Helvetica", "Arial", sans-serif' },
   });
 
+const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
