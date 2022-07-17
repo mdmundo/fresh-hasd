@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider, Typography } from "@mui/material";
+import { Container, createTheme, Paper, ThemeProvider, Typography } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 
 const App = () => {
@@ -10,7 +10,11 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Typography variant="h1" children="Hi! Lorena" />
+      <Container maxWidth="md">
+        <Paper elevation={5} sx={{ p: 2, my: 3 }}>
+          <Typography variant="h1" children="Novo Hinário Adventista" />
+        </Paper>
+      </Container>
     </ThemeProvider>
   );
 };
