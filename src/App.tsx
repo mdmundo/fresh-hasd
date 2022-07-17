@@ -65,7 +65,7 @@ const App = () => {
       <Container sx={{ mt: 2, mb: 10 }}>
         <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
           {hymns.map(({ id, num, title }) => (
-            <Grid item>
+            <Grid item key={id}>
               <Card>
                 <CardContent>
                   <Typography variant="h6" children={`Hino ${num}`} />
