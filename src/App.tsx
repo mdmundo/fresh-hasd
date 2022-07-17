@@ -58,7 +58,7 @@ const App = () => {
                   />
                 </Grid>
                 <Grid item>
-                  <IconButton color="inherit" children={<GitHub />} />
+                  <IconButton color="inherit" children={<GitHub />} href="https://github.com/mdmundo/fresh-hasd" />
                 </Grid>
               </Grid>
             </Grid>
