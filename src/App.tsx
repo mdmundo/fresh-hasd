@@ -1,5 +1,18 @@
-import { AppBar, Container, createTheme, Grid, Paper, ThemeProvider, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Container,
+  createTheme,
+  Grid,
+  ThemeProvider,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
+import { YouTube } from "@mui/icons-material";
 
 const App = () => {
   const theme = createTheme({
@@ -14,7 +27,14 @@ const App = () => {
         <Toolbar>
           <Grid container direction="row" justifyContent="space-between" alignItems="center">
             <Grid item>
-              <Typography children="Novo Hinário Adventista" />
+              <Grid container columnSpacing={1.25} direction="row" alignItems="center">
+                <Grid item>
+                  <Typography children="Logo" />
+                </Grid>
+                <Grid item>
+                  <Typography children="Novo Hinário Adventista" />
+                </Grid>
+              </Grid>
             </Grid>
             <Grid item>
               <Grid container columnSpacing={2} direction="row" alignItems="center">
@@ -29,12 +49,22 @@ const App = () => {
           </Grid>
         </Toolbar>
       </AppBar>
-      <Container maxWidth="md">
-        {new Array(10).fill(0).map(() => (
-          <Paper elevation={5} sx={{ p: 2, my: 3 }}>
-            <Typography variant="h1" children="Novo Hinário Adventista" />
-          </Paper>
-        ))}
+      <Container sx={{ my: 2 }}>
+        <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
+          {new Array(1000).fill(0).map(() => (
+            <Grid item>
+              <Card>
+                <CardContent>
+                  <Typography variant="h6">Hino 1</Typography>
+                  <Typography variant="button">Santo Santo Santo</Typography>
+                </CardContent>
+                <CardActions>
+                  <Button fullWidth variant="contained" startIcon={<YouTube />} children="Tocar" />
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </ThemeProvider>
   );
