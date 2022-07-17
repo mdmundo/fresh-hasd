@@ -16,6 +16,8 @@ import {
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { YouTube, GitHub, Search } from "@mui/icons-material";
+import { Index, IndexSearchResult } from "flexsearch";
+import { useEffect, useState } from "react";
 import hymns from "./hymns.json";
 import { Logo } from "./Icons";
 
@@ -23,8 +25,16 @@ const theme = createTheme({
   palette: { mode: "dark", primary: { main: "#edce5b", light: "#fff261", dark: "#a08b3d" } },
   typography: { fontFamily: '"Ubuntu", "Roboto", "Helvetica", "Arial", sans-serif' },
 });
+const index = new Index();
 
 const App = () => {
+  const [results, setResults] = useState<IndexSearchResult>([]);
+  useEffect(() => {
+    for (const hymn of hymns) {
+      index.add(hymn.id, `${hymn.num} ${hymn.title}`);
+    }
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -47,6 +57,9 @@ const App = () => {
                   <InputBase
                     placeholder="Pesquisar..."
                     autoFocus
+                    onChange={(e) => {
+                      console.log(index.search(e.target.value));
+                    }}
                     startAdornment={
                       <InputAdornment position="start">
                         <Search />
