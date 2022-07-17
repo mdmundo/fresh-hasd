@@ -25,13 +25,13 @@ const theme = createTheme({
   palette: { mode: "dark", primary: { main: "#edce5b", light: "#fff261", dark: "#a08b3d" } },
   typography: { fontFamily: '"Ubuntu", "Roboto", "Helvetica", "Arial", sans-serif' },
 });
-const index = new Index();
+const index = new Index({ preset: "performance", tokenize: "full" });
 
 const App = () => {
   const [results, setResults] = useState<IndexSearchResult>([]);
   useEffect(() => {
-    for (const hymn of hymns) {
-      index.addAsync(hymn.id, `${hymn.num} ${hymn.title}`);
+    for (const [i, hymn] of hymns.entries()) {
+      index.addAsync(i, `${hymn.num} ${hymn.title}`);
     }
   }, []);
 
@@ -59,7 +59,7 @@ const App = () => {
                     autoFocus
                     onChange={(e) => {
                       index.searchAsync(e.target.value).then((res) => {
-                        // setResults(res);
+                        setResults(res);
                         console.log(res);
                       });
                     }}
