@@ -31,7 +31,7 @@ const App = () => {
   const [results, setResults] = useState<IndexSearchResult>([]);
   useEffect(() => {
     for (const hymn of hymns) {
-      index.add(hymn.id, `${hymn.num} ${hymn.title}`);
+      index.addAsync(hymn.id, `${hymn.num} ${hymn.title}`);
     }
   }, []);
 
@@ -58,7 +58,10 @@ const App = () => {
                     placeholder="Pesquisar..."
                     autoFocus
                     onChange={(e) => {
-                      console.log(index.search(e.target.value));
+                      index.searchAsync(e.target.value).then((res) => {
+                        // setResults(res);
+                        console.log(res);
+                      });
                     }}
                     startAdornment={
                       <InputAdornment position="start">
