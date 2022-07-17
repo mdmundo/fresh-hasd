@@ -15,6 +15,7 @@ import {
 import CssBaseline from "@mui/material/CssBaseline";
 import { YouTube, GitHub } from "@mui/icons-material";
 import hymns from "./hymns.json";
+import { Logo } from "./Icons";
 
 const App = () => {
   const theme = createTheme({
@@ -31,7 +32,8 @@ const App = () => {
             <Grid item>
               <Grid container columnSpacing={1.25} direction="row" alignItems="center">
                 <Grid item>
-                  <Typography children="Logo" />
+                  {/* <IconButton color="inherit" size="large" children={<Logo fontSize="large" />} /> */}
+                  <Logo fontSize="large" />
                 </Grid>
                 <Grid item>
                   <Typography children="Novo Hinário Adventista" />
