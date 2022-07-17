@@ -28,13 +28,22 @@ const theme = createTheme({
 const index = new Index({ preset: "performance", tokenize: "full" });
 
 const App = () => {
+  const [stroke, setStroke] = useState("");
   const [results, setResults] = useState<IndexSearchResult>([]);
   useEffect(() => {
     for (const [i, hymn] of hymns.entries()) {
       index.addAsync(i, `${hymn.num} ${hymn.title}`);
     }
   }, []);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      index.searchAsync(stroke).then((res) => {
+        setResults(res);
+      });
+    }, 250);
 
+    return () => clearTimeout(timeout);
+  }, [stroke]);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -58,10 +67,7 @@ const App = () => {
                     placeholder="Pesquisar..."
                     autoFocus
                     onChange={(e) => {
-                      index.searchAsync(e.target.value).then((res) => {
-                        setResults(res);
-                        console.log(res);
-                      });
+                      setStroke(e.target.value);
                     }}
                     startAdornment={
                       <InputAdornment position="start">
