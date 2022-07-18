@@ -10,7 +10,6 @@ import {
   createTheme,
   Fade,
   Grid,
-  Grow,
   IconButton,
   InputAdornment,
   InputBase,
@@ -19,7 +18,6 @@ import {
   ThemeProvider,
   Toolbar,
   Typography,
-  Zoom,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { GitHub, Search, YouTube } from "@mui/icons-material";
