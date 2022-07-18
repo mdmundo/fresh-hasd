@@ -109,26 +109,24 @@ const App = () => {
   );
 };
 
-const Hymn = ({ hymn }: { hymn: { id: string; num: string; title: string } }) => {
-  return (
-    <Grid item key={hymn.id}>
-      <Card>
-        <CardContent>
-          <Typography variant="h6" children={`Hino ${hymn.num}`} />
-          <Typography variant="button" children={hymn.title} />
-        </CardContent>
-        <CardActions>
-          <Button
-            fullWidth
-            variant="contained"
-            startIcon={<YouTube />}
-            children="Tocar"
-            href={`https://youtu.be/${hymn.id}`}
-          />
-        </CardActions>
-      </Card>
-    </Grid>
-  );
-};
+const Hymn = ({ hymn }: { hymn: { id: string; num: string; title: string } }) => (
+  <Grid item key={hymn.id}>
+    <Card>
+      <CardContent>
+        <Typography variant="h6" children={`Hino ${hymn.num}`} />
+        <Typography variant="button" children={hymn.title} />
+      </CardContent>
+      <CardActions>
+        <Button
+          fullWidth
+          variant="contained"
+          startIcon={<YouTube />}
+          children="Tocar"
+          href={`https://youtu.be/${hymn.id}`}
+        />
+      </CardActions>
+    </Card>
+  </Grid>
+);
 
 export default App;
