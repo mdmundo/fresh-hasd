@@ -23,7 +23,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { GitHub, Search, YouTube } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { Document, Id } from "flexsearch";
-import InfiniteScroll from "react-infinite-scroll-component";
 import hymns from "./hymns.json";
 import { Logo } from "./Icons";
 
@@ -49,13 +48,10 @@ const index = new Document({
   },
 });
 
-const scrollDefault = hymns.slice(0, 20);
-
 const App = () => {
   const [searching, setSearching] = useState(false);
   const [stroke, setStroke] = useState("");
   const [results, setResults] = useState<Array<Id>>([]);
-  const [scroll, setScroll] = useState(scrollDefault);
 
   useEffect(() => {
     for (const [i, hymn] of hymns.entries()) {
@@ -106,7 +102,6 @@ const App = () => {
                   onChange={({ target: { value } }) => {
                     setStroke(value);
                     if (value) setSearching(true);
-                    setScroll(scrollDefault);
                   }}
                   startAdornment={
                     <InputAdornment position="start">
@@ -116,29 +111,20 @@ const App = () => {
                 />
               </Paper>
               <Container disableGutters>
-                <InfiniteScroll
-                  dataLength={scroll.length}
-                  next={() => {
-                    setScroll(hymns.slice(0, scroll.length + 30));
-                  }}
-                  hasMore={scroll.length < 601}
-                  loader={undefined}
-                >
-                  <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
-                    {searching ? (
-                      <Grid item children={<CircularProgress />} />
-                    ) : results.length > 0 ? (
-                      results.map((id) => typeof id === "number" && <Hymn key={hymns[id].id} hymn={hymns[id]} />)
-                    ) : stroke ? (
-                      <Grid
-                        item
-                        children={<Typography variant="body1" children="A pesquisa não retornou qualquer hino" />}
-                      />
-                    ) : (
-                      scroll.map((hymn) => <Hymn key={hymn.id} hymn={hymn} />)
-                    )}
-                  </Grid>
-                </InfiniteScroll>
+                <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
+                  {searching ? (
+                    <Grid item children={<CircularProgress />} />
+                  ) : results.length > 0 ? (
+                    results.map((id) => typeof id === "number" && <Hymn key={hymns[id].id} hymn={hymns[id]} />)
+                  ) : stroke ? (
+                    <Grid
+                      item
+                      children={<Typography variant="body1" children="A pesquisa não retornou qualquer hino" />}
+                    />
+                  ) : (
+                    hymns.map((hymn) => <Hymn key={hymn.id} hymn={hymn} />)
+                  )}
+                </Grid>
               </Container>
             </Stack>
           </Container>
