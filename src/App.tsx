@@ -104,6 +104,7 @@ const App = () => {
                   onChange={({ target: { value } }) => {
                     setStroke(value);
                     if (value) setSearching(true);
+                    setScroll(hymns.slice(0, 30));
                   }}
                   startAdornment={
                     <InputAdornment position="start">
@@ -113,33 +114,28 @@ const App = () => {
                 />
               </Paper>
               <Container disableGutters>
-                <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
-                  {searching ? (
-                    <Grid item children={<CircularProgress />} />
-                  ) : results.length > 0 ? (
-                    results.map((id) => typeof id === "number" && <Hymn key={hymns[id].id} hymn={hymns[id]} />)
-                  ) : stroke ? (
-                    <Grid
-                      item
-                      children={<Typography variant="body1" children="A pesquisa não retornou qualquer hino" />}
-                    />
-                  ) : (
-                    hymns.map((hymn) => <Hymn key={hymn.id} hymn={hymn} />)
-                  )}
-                </Grid>
                 <InfiniteScroll
                   dataLength={scroll.length}
                   next={() => {
                     setScroll(hymns.slice(0, scroll.length + 30));
                   }}
                   hasMore={scroll.length < 601}
-                  loader={<h4>Loading...</h4>}
+                  loader={undefined}
                 >
-                  <div>
-                    {scroll.map((i, index) => (
-                      <div key={index}>div - #{index}</div>
-                    ))}
-                  </div>
+                  <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
+                    {searching ? (
+                      <Grid item children={<CircularProgress />} />
+                    ) : results.length > 0 ? (
+                      results.map((id) => typeof id === "number" && <Hymn key={hymns[id].id} hymn={hymns[id]} />)
+                    ) : stroke ? (
+                      <Grid
+                        item
+                        children={<Typography variant="body1" children="A pesquisa não retornou qualquer hino" />}
+                      />
+                    ) : (
+                      scroll.map((hymn) => <Hymn key={hymn.id} hymn={hymn} />)
+                    )}
+                  </Grid>
                 </InfiniteScroll>
               </Container>
             </Stack>
