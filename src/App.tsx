@@ -29,6 +29,7 @@ const theme = createTheme({
 const index = new Index({ preset: "performance", tokenize: "full" });
 
 const App = () => {
+  const [searching, setSearching] = useState(false);
   const [stroke, setStroke] = useState("");
   const [results, setResults] = useState<IndexSearchResult>([]);
 
@@ -42,6 +43,7 @@ const App = () => {
     const timeout = setTimeout(() => {
       index.searchAsync(stroke).then((res) => {
         setResults(res);
+        setSearching(false);
       });
     }, 250);
 
@@ -70,8 +72,9 @@ const App = () => {
                   <InputBase
                     placeholder="Pesquisar..."
                     autoFocus
-                    onChange={(e) => {
-                      setStroke(e.target.value);
+                    onChange={({ target: { value } }) => {
+                      setStroke(value);
+                      if (value) setSearching(true);
                     }}
                     startAdornment={
                       <InputAdornment position="start">
@@ -90,12 +93,12 @@ const App = () => {
       </AppBar>
       <Container sx={{ mt: 2, mb: 10 }}>
         <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
-          {stroke ? (
-            results.length > 0 ? (
-              results.map((id) => typeof id === "number" && <Hymn hymn={hymns[id]} />)
-            ) : (
-              <Grid item children={<Typography variant="body1" children="A busca não retornou qualquer hino" />} />
-            )
+          {searching ? (
+            <Grid item children={<Typography variant="body1" children="Pesquisando..." />} />
+          ) : results.length > 0 ? (
+            results.map((id) => typeof id === "number" && <Hymn hymn={hymns[id]} />)
+          ) : stroke ? (
+            <Grid item children={<Typography variant="body1" children="A pesquisa não retornou qualquer hino" />} />
           ) : (
             hymns.map((hymn) => <Hymn hymn={hymn} />)
           )}
