@@ -4,6 +4,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  CircularProgress,
   Container,
   createTheme,
   Grid,
@@ -94,7 +95,7 @@ const App = () => {
       <Container sx={{ mt: 2, mb: 10 }}>
         <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
           {searching ? (
-            <Grid item children={<Typography variant="body1" children="Pesquisando..." />} />
+            <Grid item children={<CircularProgress />} />
           ) : results.length > 0 ? (
             results.map((id) => typeof id === "number" && <Hymn hymn={hymns[id]} />)
           ) : stroke ? (
