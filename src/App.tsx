@@ -25,16 +25,19 @@ const theme = createTheme({
   palette: { mode: "dark", primary: { main: "#edce5b", light: "#fff261", dark: "#a08b3d" } },
   typography: { fontFamily: '"Ubuntu", "Roboto", "Helvetica", "Arial", sans-serif' },
 });
+
 const index = new Index({ preset: "performance", tokenize: "full" });
 
 const App = () => {
   const [stroke, setStroke] = useState("");
   const [results, setResults] = useState<IndexSearchResult>([]);
+
   useEffect(() => {
     for (const [i, hymn] of hymns.entries()) {
       index.addAsync(i, `${hymn.num} ${hymn.title}`);
     }
   }, []);
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       index.searchAsync(stroke).then((res) => {
@@ -44,6 +47,7 @@ const App = () => {
 
     return () => clearTimeout(timeout);
   }, [stroke]);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
