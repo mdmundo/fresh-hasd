@@ -24,30 +24,45 @@ import { GitHub, Search, YouTube } from "@mui/icons-material";
 import hymns from "./hymns.json";
 import { Logo } from "./Icons";
 import { useEffect, useState } from "react";
-import { Index, IndexSearchResult } from "flexsearch";
+import { Document, Id } from "flexsearch";
 
 const theme = createTheme({
   palette: { mode: "dark", primary: { main: "#edce5b", light: "#fff261", dark: "#a08b3d" } },
   typography: { fontFamily: '"Ubuntu", "Roboto", "Helvetica", "Arial", sans-serif' },
 });
 
-const index = new Index({ preset: "performance", tokenize: "full" });
+const index = new Document({
+  document: {
+    id: "id",
+    index: [
+      {
+        field: "num",
+        preset: "performance",
+        tokenize: "strict",
+      },
+      {
+        field: "title",
+        tokenize: "full",
+      },
+    ],
+  },
+});
 
 const App = () => {
   const [searching, setSearching] = useState(false);
   const [stroke, setStroke] = useState("");
-  const [results, setResults] = useState<IndexSearchResult>([]);
+  const [results, setResults] = useState<Array<Id>>([]);
 
   useEffect(() => {
     for (const [i, hymn] of hymns.entries()) {
-      index.addAsync(i, `${hymn.num} ${hymn.title}`);
+      index.addAsync(i, hymn);
     }
   }, []);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       index.searchAsync({ query: stroke, limit: 15 }).then((res) => {
-        setResults(res);
+        setResults(res[0]?.result || []);
         setSearching(false);
       });
     }, 250);
