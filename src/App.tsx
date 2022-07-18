@@ -51,13 +51,7 @@ const App = () => (
           ))}
         </Grid>
       </Container>
-      <Paper
-        square
-        sx={{
-          p: 1.5,
-          mt: "auto",
-        }}
-      >
+      <Paper square sx={{ py: 1.5, mt: "auto" }}>
         <Grid container direction="row" justifyContent="center" alignItems="center" columnSpacing={1}>
           <Grid item children={<Typography align="center" variant="caption" children="por Edmundo Paulino" />} />
           <Grid
