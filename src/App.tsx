@@ -49,11 +49,13 @@ const index = new Document({
   },
 });
 
+const scrollDefault = hymns.slice(0, 20);
+
 const App = () => {
   const [searching, setSearching] = useState(false);
   const [stroke, setStroke] = useState("");
   const [results, setResults] = useState<Array<Id>>([]);
-  const [scroll, setScroll] = useState(hymns.slice(0, 30));
+  const [scroll, setScroll] = useState(scrollDefault);
 
   useEffect(() => {
     for (const [i, hymn] of hymns.entries()) {
@@ -104,7 +106,7 @@ const App = () => {
                   onChange={({ target: { value } }) => {
                     setStroke(value);
                     if (value) setSearching(true);
-                    setScroll(hymns.slice(0, 30));
+                    setScroll(scrollDefault);
                   }}
                   startAdornment={
                     <InputAdornment position="start">
