@@ -97,11 +97,11 @@ const App = () => {
           {searching ? (
             <Grid item children={<CircularProgress />} />
           ) : results.length > 0 ? (
-            results.map((id) => typeof id === "number" && <Hymn hymn={hymns[id]} />)
+            results.map((id) => typeof id === "number" && <Hymn key={hymns[id].id} hymn={hymns[id]} />)
           ) : stroke ? (
             <Grid item children={<Typography variant="body1" children="A pesquisa não retornou qualquer hino" />} />
           ) : (
-            hymns.map((hymn) => <Hymn hymn={hymn} />)
+            hymns.map((hymn) => <Hymn key={hymn.id} hymn={hymn} />)
           )}
         </Grid>
       </Container>
@@ -110,7 +110,7 @@ const App = () => {
 };
 
 const Hymn = ({ hymn }: { hymn: { id: string; num: string; title: string } }) => (
-  <Grid item key={hymn.id}>
+  <Grid item>
     <Card>
       <CardContent>
         <Typography variant="h6" children={`Hino ${hymn.num}`} />
