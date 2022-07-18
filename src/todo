@@ -1,8 +1,1 @@
 transition
-searching experience
-
-
-searching: pesquisando
-!searching && length && stroke: resultado da pesquisa (hinos)
-!searching && !length && stroke: resultado da pesquisa (vazio)
-!searching && !length && !stroke: todos os hinos
