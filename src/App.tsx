@@ -42,7 +42,7 @@ const App = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      index.searchAsync(stroke).then((res) => {
+      index.searchAsync({ query: stroke, limit: 15 }).then((res) => {
         setResults(res);
         setSearching(false);
       });
