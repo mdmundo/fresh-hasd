@@ -23,6 +23,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { GitHub, Search, YouTube } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { Document, Id } from "flexsearch";
+import InfiniteScroll from "react-infinite-scroll-component";
 import hymns from "./hymns.json";
 import { Logo } from "./Icons";
 
@@ -52,6 +53,7 @@ const App = () => {
   const [searching, setSearching] = useState(false);
   const [stroke, setStroke] = useState("");
   const [results, setResults] = useState<Array<Id>>([]);
+  const [scroll, setScroll] = useState(hymns.slice(0, 30));
 
   useEffect(() => {
     for (const [i, hymn] of hymns.entries()) {
@@ -125,6 +127,20 @@ const App = () => {
                     hymns.map((hymn) => <Hymn key={hymn.id} hymn={hymn} />)
                   )}
                 </Grid>
+                <InfiniteScroll
+                  dataLength={scroll.length}
+                  next={() => {
+                    setScroll(hymns.slice(0, scroll.length + 30));
+                  }}
+                  hasMore={scroll.length < 601}
+                  loader={<h4>Loading...</h4>}
+                >
+                  <div>
+                    {scroll.map((i, index) => (
+                      <div key={index}>div - #{index}</div>
+                    ))}
+                  </div>
+                </InfiniteScroll>
               </Container>
             </Stack>
           </Container>
