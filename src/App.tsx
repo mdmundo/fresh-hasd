@@ -21,10 +21,10 @@ import {
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { GitHub, Search, YouTube } from "@mui/icons-material";
-import hymns from "./hymns.json";
-import { Logo } from "./Icons";
 import { useEffect, useState } from "react";
 import { Document, Id } from "flexsearch";
+import hymns from "./hymns.json";
+import { Logo } from "./Icons";
 
 const theme = createTheme({
   palette: { mode: "dark", primary: { main: "#edce5b", light: "#fff261", dark: "#a08b3d" } },
