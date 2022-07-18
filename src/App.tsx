@@ -9,13 +9,16 @@ import {
   createTheme,
   Grid,
   IconButton,
+  InputAdornment,
+  InputBase,
   Paper,
+  Stack,
   ThemeProvider,
   Toolbar,
   Typography,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import { GitHub, YouTube } from "@mui/icons-material";
+import { GitHub, Search, YouTube } from "@mui/icons-material";
 import hymns from "./hymns.json";
 import { Logo } from "./Icons";
 
@@ -45,11 +48,28 @@ const App = () => (
         </Toolbar>
       </AppBar>
       <Container sx={{ mt: 2, mb: 10 }}>
-        <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
-          {hymns.map((hymn) => (
-            <Hymn key={hymn.id} hymn={hymn} />
-          ))}
-        </Grid>
+        <Stack spacing={3}>
+          <Paper>
+            <InputBase
+              sx={{ p: 1.3 }}
+              placeholder="Pesquisar..."
+              autoFocus
+              fullWidth
+              startAdornment={
+                <InputAdornment position="start">
+                  <Search />
+                </InputAdornment>
+              }
+            />
+          </Paper>
+          <Container disableGutters>
+            <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
+              {hymns.map((hymn) => (
+                <Hymn key={hymn.id} hymn={hymn} />
+              ))}
+            </Grid>
+          </Container>
+        </Stack>
       </Container>
       <Paper elevation={4} square sx={{ py: 1.5, mt: "auto" }}>
         <Grid container direction="row" justifyContent="center" alignItems="center" columnSpacing={1}>
