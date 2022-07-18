@@ -8,7 +8,9 @@ import {
   CircularProgress,
   Container,
   createTheme,
+  Fade,
   Grid,
+  Grow,
   IconButton,
   InputAdornment,
   InputBase,
@@ -17,6 +19,7 @@ import {
   ThemeProvider,
   Toolbar,
   Typography,
+  Zoom,
 } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { GitHub, Search, YouTube } from "@mui/icons-material";
@@ -57,78 +60,80 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-        <AppBar position="static">
-          <Toolbar>
-            <Grid container direction="row" justifyContent="space-between" alignItems="center" sx={{ py: 2 }}>
-              <Grid item>
-                <Grid container columnSpacing={1.25} direction="row" alignItems="center" justifyContent="flex-start">
-                  <Grid item>
-                    <Logo fontSize="large" />
-                  </Grid>
-                  <Grid item>
-                    <Typography variant="h6" children="Novo Hinário Adventista" />
+      <Fade in timeout={1750}>
+        <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+          <AppBar position="static">
+            <Toolbar>
+              <Grid container direction="row" justifyContent="space-between" alignItems="center" sx={{ py: 2 }}>
+                <Grid item>
+                  <Grid container columnSpacing={1.25} direction="row" alignItems="center" justifyContent="flex-start">
+                    <Grid item>
+                      <Logo fontSize="large" />
+                    </Grid>
+                    <Grid item>
+                      <Typography variant="h6" children="Novo Hinário Adventista" />
+                    </Grid>
                   </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-          </Toolbar>
-        </AppBar>
-        <Container sx={{ mt: 2, mb: 10 }}>
-          <Stack spacing={3}>
-            <Paper>
-              <InputBase
-                sx={{ p: 1.3 }}
-                placeholder="Pesquisar..."
-                autoFocus
-                fullWidth
-                onChange={({ target: { value } }) => {
-                  setStroke(value);
-                  if (value) setSearching(true);
-                }}
-                startAdornment={
-                  <InputAdornment position="start">
-                    <Search />
-                  </InputAdornment>
+            </Toolbar>
+          </AppBar>
+          <Container sx={{ mt: 2, mb: 10 }}>
+            <Stack spacing={3}>
+              <Paper>
+                <InputBase
+                  sx={{ p: 1.3 }}
+                  placeholder="Pesquisar..."
+                  autoFocus
+                  fullWidth
+                  onChange={({ target: { value } }) => {
+                    setStroke(value);
+                    if (value) setSearching(true);
+                  }}
+                  startAdornment={
+                    <InputAdornment position="start">
+                      <Search />
+                    </InputAdornment>
+                  }
+                />
+              </Paper>
+              <Container disableGutters>
+                <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
+                  {searching ? (
+                    <Grid item children={<CircularProgress />} />
+                  ) : results.length > 0 ? (
+                    results.map((id) => typeof id === "number" && <Hymn key={hymns[id].id} hymn={hymns[id]} />)
+                  ) : stroke ? (
+                    <Grid
+                      item
+                      children={<Typography variant="body1" children="A pesquisa não retornou qualquer hino" />}
+                    />
+                  ) : (
+                    hymns.map((hymn) => <Hymn key={hymn.id} hymn={hymn} />)
+                  )}
+                </Grid>
+              </Container>
+            </Stack>
+          </Container>
+          <Paper elevation={4} square sx={{ py: 1.5, mt: "auto" }}>
+            <Grid container direction="row" justifyContent="center" alignItems="center" columnSpacing={1}>
+              <Grid item children={<Typography align="center" variant="caption" children="por Edmundo Paulino" />} />
+              <Grid
+                item
+                children={
+                  <IconButton
+                    size="small"
+                    color="inherit"
+                    children={<GitHub />}
+                    href="https://github.com/mdmundo/fresh-hasd"
+                  />
                 }
               />
-            </Paper>
-            <Container disableGutters>
-              <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
-                {searching ? (
-                  <Grid item children={<CircularProgress />} />
-                ) : results.length > 0 ? (
-                  results.map((id) => typeof id === "number" && <Hymn key={hymns[id].id} hymn={hymns[id]} />)
-                ) : stroke ? (
-                  <Grid
-                    item
-                    children={<Typography variant="body1" children="A pesquisa não retornou qualquer hino" />}
-                  />
-                ) : (
-                  hymns.map((hymn) => <Hymn key={hymn.id} hymn={hymn} />)
-                )}
-              </Grid>
-            </Container>
-          </Stack>
-        </Container>
-        <Paper elevation={4} square sx={{ py: 1.5, mt: "auto" }}>
-          <Grid container direction="row" justifyContent="center" alignItems="center" columnSpacing={1}>
-            <Grid item children={<Typography align="center" variant="caption" children="por Edmundo Paulino" />} />
-            <Grid
-              item
-              children={
-                <IconButton
-                  size="small"
-                  color="inherit"
-                  children={<GitHub />}
-                  href="https://github.com/mdmundo/fresh-hasd"
-                />
-              }
-            />
-            <Grid item children={<Typography align="center" variant="caption" children="criado em 2022" />} />
-          </Grid>
-        </Paper>
-      </Box>
+              <Grid item children={<Typography align="center" variant="caption" children="criado em 2022" />} />
+            </Grid>
+          </Paper>
+        </Box>
+      </Fade>
     </ThemeProvider>
   );
 };
