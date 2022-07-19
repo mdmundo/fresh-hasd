@@ -96,7 +96,7 @@ const App = () => {
               <Paper>
                 <InputBase
                   sx={{ p: 1.3 }}
-                  placeholder="Pesquisar..."
+                  placeholder="Pesquisar…"
                   autoFocus
                   fullWidth
                   onChange={({ target: { value } }) => {
@@ -115,14 +115,40 @@ const App = () => {
                   {searching ? (
                     <Grid item children={<CircularProgress />} />
                   ) : results.length > 0 ? (
-                    results.map((id) => typeof id === "number" && <Hymn key={hymns[id].id} hymn={hymns[id]} />)
+                    results.map(
+                      (id) =>
+                        typeof id === "number" && (
+                          <Grid key={hymns[id].id} item>
+                            <Card>
+                              <CardContent>
+                                <Typography variant="h6" children={`Hino ${hymns[id].num}`} />
+                                <Typography variant="button" children={hymns[id].title} />
+                              </CardContent>
+                              <CardActions>
+                                <Button
+                                  fullWidth
+                                  variant="contained"
+                                  startIcon={<YouTube />}
+                                  children="Tocar"
+                                  href={`https://youtu.be/${hymns[id].id}`}
+                                />
+                              </CardActions>
+                            </Card>
+                          </Grid>
+                        )
+                    )
                   ) : stroke ? (
                     <Grid
                       item
                       children={<Typography variant="body1" children="A pesquisa não retornou qualquer hino" />}
                     />
                   ) : (
-                    hymns.map((hymn) => <Hymn key={hymn.id} hymn={hymn} />)
+                    <Grid item>
+                      <Typography
+                        align="center"
+                        children="Pesquise por Número, Título, Categoria (em breve), Trechos da letra (em breve)."
+                      />
+                    </Grid>
                   )}
                 </Grid>
               </Container>
@@ -150,25 +176,5 @@ const App = () => {
     </ThemeProvider>
   );
 };
-
-const Hymn = ({ hymn }: { hymn: { id: string; num: string; title: string } }) => (
-  <Grid item>
-    <Card>
-      <CardContent>
-        <Typography variant="h6" children={`Hino ${hymn.num}`} />
-        <Typography variant="button" children={hymn.title} />
-      </CardContent>
-      <CardActions>
-        <Button
-          fullWidth
-          variant="contained"
-          startIcon={<YouTube />}
-          children="Tocar"
-          href={`https://youtu.be/${hymn.id}`}
-        />
-      </CardActions>
-    </Card>
-  </Grid>
-);
 
 export default App;
