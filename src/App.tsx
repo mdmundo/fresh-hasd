@@ -73,7 +73,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Fade in timeout={1750}>
+      <Fade in timeout={1250} easing="cubic-bezier(0.675, -0.340, 1.000, 0.265)">
         <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
           <AppBar position="static">
             <Toolbar>
