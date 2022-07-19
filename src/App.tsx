@@ -91,7 +91,7 @@ const App = () => {
               </Grid>
             </Toolbar>
           </AppBar>
-          <Container sx={{ mt: 2, mb: 10 }}>
+          <Container sx={{ mt: 2, mb: 5 }}>
             <Stack spacing={3}>
               <Paper>
                 <InputBase
@@ -144,10 +144,21 @@ const App = () => {
                     />
                   ) : (
                     <Grid item>
-                      <Typography
-                        align="center"
-                        children="Pesquise por Número, Título, Categoria (em breve), Trechos da letra (em breve)."
-                      />
+                      <Stack
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="center"
+                        spacing={3}
+                        sx={{ color: "text.disabled" }}
+                      >
+                        <Typography
+                          color="inherit"
+                          align="center"
+                          children="Pesquise por Número, Título, Categoria (em breve), Trechos da letra (em breve)."
+                          sx={{ fontStyle: "italic" }}
+                        />
+                        <Logo color="inherit" sx={{ fontSize: "12rem" }} />
+                      </Stack>
                     </Grid>
                   )}
                 </Grid>
