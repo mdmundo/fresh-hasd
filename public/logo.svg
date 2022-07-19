@@ -5,10 +5,6 @@
    viewBox="0 0 31.27269 52"
    version="1.1"
    id="svg1066"
-   sodipodi:docname="logo-novo-hasd.svg"
-   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -16,27 +12,8 @@
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs1070" />
-  <sodipodi:namedview
-     id="namedview1068"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     showgrid="false"
-     inkscape:zoom="4"
-     inkscape:cx="69.875"
-     inkscape:cy="52.375"
-     inkscape:window-width="1920"
-     inkscape:window-height="991"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg1066" />
   <title
-     id="title1061">logo-novo-hasd-full</title>
+     id="title1061">logo</title>
   <path
      id="path2404"
      style="fill:#222428;fill-rule:evenodd;stroke:none;stroke-width:1"
@@ -46,7 +23,7 @@
     <rdf:RDF>
       <cc:Work
          rdf:about="">
-        <dc:title>logo-novo-hasd-full</dc:title>
+        <dc:title>logo</dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
