@@ -130,7 +130,7 @@ const App = () => {
                                   variant="contained"
                                   startIcon={<YouTube />}
                                   children="Tocar"
-                                  href={`https://youtu.be/${hymns[id].id}`}
+                                  href={`https://youtu.be/${hymns[id].id}?list=PL9jYClRZ0qswAYHxRueXgo7w9BYtA7LtC`}
                                 />
                               </CardActions>
                             </Card>
