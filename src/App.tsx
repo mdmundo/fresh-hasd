@@ -152,10 +152,10 @@ const App = () => {
                         sx={{ color: "text.disabled" }}
                       >
                         <Typography
+                          variant="body2"
                           color="inherit"
                           align="center"
-                          children="Pesquise por Número, Título, Categoria (em breve), Trechos da letra (em breve)."
-                          sx={{ fontStyle: "italic" }}
+                          children="Pesquise por número, título, categoria (em breve), trechos da letra (em breve)."
                         />
                         <Logo color="inherit" sx={{ fontSize: "12rem" }} />
                       </Stack>
