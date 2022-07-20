@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="631.50128"
-   height="150.62813"
-   viewBox="0 0 631.50129 150.62814"
+   width="650"
+   height="150"
+   viewBox="0 0 650.00001 150.00001"
    version="1.1"
    id="svg1066"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,18 +24,19 @@
     </rdf:RDF>
   </metadata>
   <g
-     id="g1708">
+     id="g999">
     <rect
        style="fill:#edce5b;fill-opacity:1;stroke-width:1.29096"
        id="rect4148"
-       width="631.50128"
-       height="150.62813"
+       width="650"
+       height="150"
        x="0"
        y="0"
-       ry="15.491526" />
+       ry="10" />
     <g
        id="g577"
-       style="opacity:1;fill:#272727;fill-opacity:1">
+       style="fill:#272727;fill-opacity:1"
+       transform="translate(9.2493615,-0.314064)">
       <path
          id="path2404"
          style="fill:#272727;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.83093"
