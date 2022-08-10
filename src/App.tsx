@@ -77,9 +77,21 @@ const App = () => {
         <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
           <AppBar position="static">
             <Toolbar>
-              <Grid container direction="row" justifyContent="space-between" alignItems="center" sx={{ py: 2 }}>
+              <Grid
+                container
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{ py: 2 }}
+              >
                 <Grid item>
-                  <Grid container columnSpacing={1.25} direction="row" alignItems="center" justifyContent="flex-start">
+                  <Grid
+                    container
+                    columnSpacing={1.25}
+                    direction="row"
+                    alignItems="center"
+                    justifyContent="flex-start"
+                  >
                     <Grid item>
                       <Logo fontSize="large" />
                     </Grid>
@@ -111,7 +123,13 @@ const App = () => {
                 />
               </Paper>
               <Container disableGutters>
-                <Grid container direction="row" justifyContent="center" alignItems="flex-start" spacing={2}>
+                <Grid
+                  container
+                  direction="row"
+                  justifyContent="center"
+                  alignItems="flex-start"
+                  spacing={2}
+                >
                   {searching ? (
                     <Grid item children={<CircularProgress />} />
                   ) : results.length > 0 ? (
@@ -130,7 +148,7 @@ const App = () => {
                                   variant="contained"
                                   startIcon={<YouTube />}
                                   children="Tocar"
-                                  href={`https://youtu.be/${hymns[id].id}?list=PL9jYClRZ0qswAYHxRueXgo7w9BYtA7LtC`}
+                                  href={`https://youtu.be/${hymns[id].id}`}
                                 />
                               </CardActions>
                             </Card>
@@ -140,7 +158,12 @@ const App = () => {
                   ) : stroke ? (
                     <Grid
                       item
-                      children={<Typography variant="body1" children="A pesquisa não retornou qualquer hino" />}
+                      children={
+                        <Typography
+                          variant="body1"
+                          children="A pesquisa não retornou qualquer hino"
+                        />
+                      }
                     />
                   ) : (
                     <Grid item>
@@ -155,7 +178,7 @@ const App = () => {
                           variant="body2"
                           color="inherit"
                           align="center"
-                          children="Pesquise por número, título, categoria (em breve), trechos da letra (em breve)."
+                          children="Pesquise por número, título, trechos da letra (em breve)."
                         />
                         <Logo color="inherit" sx={{ fontSize: "12rem" }} />
                       </Stack>
@@ -166,8 +189,19 @@ const App = () => {
             </Stack>
           </Container>
           <Paper elevation={4} square sx={{ py: 1.5, mt: "auto" }}>
-            <Grid container direction="row" justifyContent="center" alignItems="center" columnSpacing={1}>
-              <Grid item children={<Typography align="center" variant="caption" children="por Edmundo Paulino" />} />
+            <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              columnSpacing={1}
+            >
+              <Grid
+                item
+                children={
+                  <Typography align="center" variant="caption" children="por Edmundo Paulino" />
+                }
+              />
               <Grid
                 item
                 children={
@@ -179,7 +213,10 @@ const App = () => {
                   />
                 }
               />
-              <Grid item children={<Typography align="center" variant="caption" children="criado em 2022" />} />
+              <Grid
+                item
+                children={<Typography align="center" variant="caption" children="criado em 2022" />}
+              />
             </Grid>
           </Paper>
         </Box>
