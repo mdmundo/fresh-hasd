@@ -38,11 +38,15 @@ const index = new Document({
       {
         field: "num",
         preset: "performance",
-        tokenize: "strict",
       },
       {
         field: "title",
         tokenize: "full",
+      },
+      {
+        field: "lyrics",
+        preset: "match",
+        tokenize: "forward",
       },
     ],
   },
@@ -62,7 +66,7 @@ const App = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       index.searchAsync({ query: stroke, limit: 15 }).then((res) => {
-        setResults(res[0]?.result || []);
+        setResults([...new Set(res.flatMap((field) => field.result).slice(0, 10))] || []);
         setSearching(false);
       });
     }, 250);
@@ -148,7 +152,7 @@ const App = () => {
                                   variant="contained"
                                   startIcon={<YouTube />}
                                   children="Tocar"
-                                  href={`https://youtu.be/${hymns[id].id}`}
+                                  href={`https://youtu.be/${hymns[id].yt}`}
                                 />
                               </CardActions>
                             </Card>
@@ -178,7 +182,7 @@ const App = () => {
                           variant="body2"
                           color="inherit"
                           align="center"
-                          children="Pesquise por número, título, trechos da letra (em breve)."
+                          children="Pesquise por número, título ou trecho da letra."
                         />
                         <Logo color="inherit" sx={{ fontSize: "12rem" }} />
                       </Stack>
